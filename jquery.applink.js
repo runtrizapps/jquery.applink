@@ -87,7 +87,11 @@
             popupOpened.close();
         }
 
-        window.location = s.href;
+        if (s.target) {
+          window.open(s.href, s.target);
+        } else {
+          window.location = s.href;
+        }
     }
 
     var PopUp = function (s) {
