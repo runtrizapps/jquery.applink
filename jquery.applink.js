@@ -87,11 +87,7 @@
             popupOpened.close();
         }
 
-        if (s.target) {
-          window.open(s.href, s.target);
-        } else {
-          window.location = s.href;
-        }
+        window.open(s.href, '_blank');
     }
 
     var PopUp = function (s) {
