@@ -4,6 +4,7 @@
             popup: 'auto',
             desktop: false,
             delegate: null,
+            target: null,
             timeout: 1500,
             data: pluginName
         },
@@ -23,6 +24,7 @@
         s.applink = $element.data(s.data);
         s.popup = $element.data('popup');
         s.desktop = $element.data('desktop');
+        s.target = $element.data('target');
 
         if ((typeof s.desktop === 'undefined') || !s.desktop) {
             s.desktop = defaults.desktop;
