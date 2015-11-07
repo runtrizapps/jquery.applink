@@ -4,7 +4,6 @@
             popup: 'auto',
             desktop: false,
             delegate: null,
-            target: null,
             timeout: 1500,
             data: pluginName
         },
@@ -24,7 +23,6 @@
         s.applink = $element.data(s.data);
         s.popup = $element.data('popup');
         s.desktop = $element.data('desktop');
-        s.target = $element.data('target');
 
         if ((typeof s.desktop === 'undefined') || !s.desktop) {
             s.desktop = defaults.desktop;
@@ -78,7 +76,7 @@
         return false;
     }
 
-    var Link = function (s) {
+    var Link = function (s, target) {
         if (s.popup) {
             return PopUp(s);
         }
@@ -87,7 +85,11 @@
             popupOpened.close();
         }
 
-        window.open(s.href, '_blank');
+        if (target) {
+          window.open(s.href, '_blank');
+        } else {
+          window.location = s.href;
+        }
     }
 
     var PopUp = function (s) {
@@ -129,7 +131,7 @@
                 var s = setSettings($(this), that.settings);
 
                 if (!s.enabled) {
-                    return Link(s);
+                    return Link(s, '_blank');
                 }
 
                 Callback(s);
